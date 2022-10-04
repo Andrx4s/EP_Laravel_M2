@@ -64,9 +64,8 @@ class UserController extends Controller
 
     public function show()
     {
-        $users = User::select('*');
-        $usersItems = $users->get();
+        $users = User::all();
 
-        return view('admin.users', ['users' => $usersItems]);
+        return view('admin.users', compact('users'));
     }
 }
