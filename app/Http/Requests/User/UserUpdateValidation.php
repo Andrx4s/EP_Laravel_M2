@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\User;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RegisterValidation extends FormRequest
+class UserUpdateValidation extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,11 +25,8 @@ class RegisterValidation extends FormRequest
     {
         return [
             'fullname' => 'required',
-            'password' => 'required|min:6|confirmed',
-            'email' => 'required|unique:user',
-            'birthday' => 'required|date',
-            'photo_file' => 'required|max:2048|file|image',
-            'privacy' => 'required'
+            'email' => 'required|email|unique:user,email,'.$this->user->id,
+            'role_id' => 'required|exists:roles,id'
         ];
     }
 }

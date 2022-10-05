@@ -38,7 +38,8 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <li><a class="dropdown-item" href="{{route('admin.roles')}}">Просмотр ролей</a></li>
-                                <li><a class="dropdown-item" href="{{route('admin.users')}}">Все пользователи</a></li>
+                                <li><a class="dropdown-item" href="{{route('admin.user.index')}}">Все пользователи</a></li>
+                                <li><a class="dropdown-item" href="{{route('admin.newacc')}}">Добавить пользователя</a></li>
                             </ul>
                         </li>
                     @endif

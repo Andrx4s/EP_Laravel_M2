@@ -6,14 +6,10 @@
             <div class="col"></div>
             <div class="col10">
                 <h1>Регистрация нового пользователя</h1>
-                @auth
-                    <div class="alert alert-primary">Вы уже авторизованы. Регистрация невозможна</div>
-                @endauth
-                @guest
                     <form method="POST" action="{{route('register')}}" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3">
-                            <label for="inputFullname" class="form-label">Ваше ФИО:</label>
+                            <label for="inputFullname" class="form-label">ФИО нового пользователя:</label>
                             <input type="text" name="fullname" class="form-control @error('fullname') is-invalid @enderror " id="inputFullname" aria-describedby="invalidFullnameFeedback" value="{{ old('fullname')}}">
                             @error('fullname') <div id="invalidFullnameFeedback" class="invalid-feedback">{{$message}}</div> @enderror
                         </div>
@@ -42,14 +38,8 @@
                             <input type="password" name="password_confirmation" class="form-control @error('password') is-invalid @enderror " id="inputPasswordConfirmation" aria-describedby="invalidPasswordConfirmationFeedback">
                             @error('password') <div id="invalidPasswordConfirmationFeedback" class="invalid-feedback">{{$message}}</div> @enderror
                         </div>
-                        <div class="mb-3 form-check">
-                            <input type="checkbox" name="privacy" class="form-check-input @error('privacy') is-invalid @enderror " id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Согласие с политикой конфиденциальности.</label>
-                            @error('privacy') <div id="invalidEmailFeedback" class="invalid-feedback">{{$message}}</div> @enderror
-                        </div>
                         <button type="submit" class="btn btn-primary">Регистрация</button>
                     </form>
-                @endguest
             </div>
             <div class="col"></div>
         </div>

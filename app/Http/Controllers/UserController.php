@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginValidation;
 use App\Http\Requests\RegisterValidation;
+use App\Http\Requests\User\UserUpdateValidation;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -17,7 +18,7 @@ class UserController extends Controller
      */
     public function login()
     {
-        return view('users.login');
+        return view('user.login');
     }
 
     /**
@@ -42,7 +43,7 @@ class UserController extends Controller
      * @param RegisterValidation $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function registerPost(RegisterValidation $request, Role $role)
+    public function registerPost(RegisterValidation $request)
     {
         $requests = $request->validated();
         unset($requests['photo_file']);
@@ -66,6 +67,39 @@ class UserController extends Controller
     {
         $users = User::all();
 
-        return view('admin.users', compact('users'));
+        return view('admin.user.users', compact('users'));
+    }
+
+    public function edit(Request $request, User $user)
+    {
+        $roles = Role::all();
+        $request->session()->flashInput($user->toArray());
+        return view('admin.createOrUpdate', compact('user' , 'roles'));
+    }
+
+    public function update(UserUpdateValidation $request, User $user)
+    {
+        $validate = $request->validated();
+        $user->update($validate);
+        return back()->with(['success' => true]);
+    }
+
+    public function destroy(User $user)
+    {
+        $user->delete();
+        return back();
+    }
+
+    public function create(RegisterValidation $request)
+    {
+        $requests = $request->validated();
+        unset($requests['photo_file']);
+        # public/asd.jpg
+        $photo = $request->file('photo_file')->store('public');
+        # Explode => / => public/asd,jpg => ['public', 'asd.jpg']
+        $requests['avatar'] = explode('/', $photo)[1];
+        $requests['password'] = Hash::make($requests['password']);
+        User::create($requests);
+        return view('admin.user.newRegister')->with(['register' => true]);
     }
 }
