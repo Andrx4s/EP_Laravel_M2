@@ -78,7 +78,7 @@ class UserController extends Controller
     {
         $roles = Role::all();
         $request->session()->flashInput($user->toArray());
-        return view('admin.user.createOrUpdate', compact('user' , 'roles'));
+        return view('admin.user.createOrUpdate.blade.php', compact('user' , 'roles'));
     }
 
     public function update(UserUpdateValidation $request, User $user)

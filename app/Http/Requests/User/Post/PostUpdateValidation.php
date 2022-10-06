@@ -13,7 +13,7 @@ class PostUpdateValidation extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,11 @@ class PostUpdateValidation extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required',
+            'full_description' => 'required',
+            'short_description' => 'required|max:50',
+            'tag' => 'required',
+            'photo_file' => 'nullable|max:2048|file|image',
         ];
     }
 }
