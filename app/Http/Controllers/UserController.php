@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginValidation;
 use App\Http\Requests\RegisterValidation;
+use App\Http\Requests\User\NewUserValidation;
 use App\Http\Requests\User\UserUpdateValidation;
 use App\Models\Role;
 use App\Models\User;
@@ -18,7 +19,7 @@ class UserController extends Controller
      */
     public function login()
     {
-        return view('user.login');
+        return view('users.login');
     }
 
     /**
@@ -34,6 +35,9 @@ class UserController extends Controller
         return back()->withErrors(['auth' => 'Логин или пароль не верный!']);
     }
 
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function register()
     {
         return view('users.register');
@@ -63,7 +67,7 @@ class UserController extends Controller
         return redirect()->route('login');
     }
 
-    public function show()
+    public function index()
     {
         $users = User::all();
 
@@ -74,7 +78,7 @@ class UserController extends Controller
     {
         $roles = Role::all();
         $request->session()->flashInput($user->toArray());
-        return view('admin.createOrUpdate', compact('user' , 'roles'));
+        return view('admin.user.createOrUpdate', compact('user' , 'roles'));
     }
 
     public function update(UserUpdateValidation $request, User $user)
@@ -87,10 +91,16 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-        return back();
+        return back()->with(['success' => true]);
     }
 
-    public function create(RegisterValidation $request)
+    public function create()
+    {
+        $roles = Role::all();
+        return view('admin.user.newRegister', compact('roles'));
+    }
+
+    public function store(NewUserValidation $request)
     {
         $requests = $request->validated();
         unset($requests['photo_file']);
@@ -100,6 +110,11 @@ class UserController extends Controller
         $requests['avatar'] = explode('/', $photo)[1];
         $requests['password'] = Hash::make($requests['password']);
         User::create($requests);
-        return view('admin.user.newRegister')->with(['register' => true]);
+        return back()->with(['register' => true]);
+    }
+
+    public function show(User $user)
+    {
+        return view('admin.user.show', compact('user'));
     }
 }

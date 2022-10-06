@@ -4,9 +4,12 @@
     <div class="container">
         <div class="row">
             <div class="col"></div>
-            <div class="col10">
+            <div class="col-10">
+                @if(session()->has('register'))
+                    <div class="alert alert-primary">Аккаунт успешно добавлен!</div>
+                @endif
                 <h1>Регистрация нового пользователя</h1>
-                    <form method="POST" action="{{route('register')}}" enctype="multipart/form-data">
+                    <form method="POST" action="{{route('admin.user.store')}}" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3">
                             <label for="inputFullname" class="form-label">ФИО нового пользователя:</label>
@@ -37,6 +40,15 @@
                             <label for="inputPasswordConfirmation" class="form-label">Повторите пароль:</label>
                             <input type="password" name="password_confirmation" class="form-control @error('password') is-invalid @enderror " id="inputPasswordConfirmation" aria-describedby="invalidPasswordConfirmationFeedback">
                             @error('password') <div id="invalidPasswordConfirmationFeedback" class="invalid-feedback">{{$message}}</div> @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputRole" class="form-label">Роль:</label>
+                            <select id="inputRole" name="role_id" class="form-select @error('role_id') is-invalid @enderror" aria-describedby="invalidInputRole">
+                                @foreach($roles as $role)
+                                    <option value="{{$role->id}}">{{$role->name}}</option>
+                                @endforeach
+                            </select>
+                            @error('role_id') <div id="invalidInputRole" class="invalid-feedback">{{$message}}</div> @enderror
                         </div>
                         <button type="submit" class="btn btn-primary">Регистрация</button>
                     </form>

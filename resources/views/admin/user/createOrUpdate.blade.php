@@ -16,7 +16,7 @@
                         <div class="alert alert-success">Аккаунт успешно создан!</div>
                     @endif
                 @endif
-                <form method="POST" action="{{(isset($user) ? route('admin.user.update', ['user' => $user->id]) : route('admin.product.store'))}}" enctype="multipart/form-data">
+                <form method="POST" action="{{(isset($user) ? route('admin.user.update', ['user' => $user->id]) : route('admin.user.create'))}}" enctype="multipart/form-data">
                     @csrf
                     @isset($user)
                         <input type="hidden" name="_method" value="PUT">

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\User;
+namespace App\Http\Requests\User\Post;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserUpdateValidation extends FormRequest
+class PostCreateValidation extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class UserUpdateValidation extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
@@ -24,9 +24,7 @@ class UserUpdateValidation extends FormRequest
     public function rules()
     {
         return [
-            'fullname' => 'required',
-            'email' => 'required|email|unique:users,email,'.$this->user->id,
-            'role_id' => 'required|exists:roles,id'
+            //
         ];
     }
 }

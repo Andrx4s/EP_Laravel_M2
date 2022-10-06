@@ -32,9 +32,7 @@ Route::middleware('auth')->group(function() {
         Route::middleware('role:Admin')->group(function () {
             Route::group(['prefix' => '/admin', 'as' => 'admin.'], function () {
                 Route::resource('/user', UserController::class);
-                Route::get('/roles', [RoleController::class, 'index'])->name('roles');
-                Route::get('/newacc', [UserController::class, 'create'])->name('newacc');
-                Route::get('/users', [UserController::class, 'show'])->name('user');
+                Route::resource('/roles', RoleController::class);
             });
             });
     });

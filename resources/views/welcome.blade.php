@@ -31,15 +31,16 @@
                 @endguest
                 @auth
                     <li class="nav-item"><a class="nav-link" href="">Мой аккаунт</a></li>
-                    @if(Auth::user()->role_id == 3)
+                    @if(Auth::user()->role->name == 'Администратор')
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Администрирование
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a class="dropdown-item" href="{{route('admin.roles')}}">Просмотр ролей</a></li>
+                                <li><a class="dropdown-item" href="{{route('admin.roles.index')}}">Просмотр ролей</a></li>
+                                <li><a class="dropdown-item" href="{{route('admin.roles.create')}}">Добавить роль</a></li>
                                 <li><a class="dropdown-item" href="{{route('admin.user.index')}}">Все пользователи</a></li>
-                                <li><a class="dropdown-item" href="{{route('admin.newacc')}}">Добавить пользователя</a></li>
+                                <li><a class="dropdown-item" href="{{route('admin.user.create')}}">Добавить пользователя</a></li>
                             </ul>
                         </li>
                     @endif

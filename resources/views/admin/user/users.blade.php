@@ -7,7 +7,7 @@
             <div class="col-8">
                 @if(session()->has('success'))
                     @if(session()->get('success'))
-                        <div class="alert alert-success">Ваш заказ успешно отменен!</div>
+                        <div class="alert alert-success">Аккаунт успешно удален!</div>
                     @else
                         <div class="alert alert-danger">Вы не имеете доступа к данному заказу!</div>
                     @endif
@@ -34,12 +34,12 @@
                                     </ul>
                                         <a href="{{route('admin.user.edit', ['user' => $item->id])}}" class="btn btn-primary mt-2">Редактировать</a>
                                         <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" href="{{route('admin.user.destroy', ['user' => $item->id])}}" class="btn btn-danger mt-2">Удалить</button>
-                                        <a href="" class="btn btn-info text-white mt-2">Посмотреть</a>
+                                        <a href="{{route('admin.user.show', ['user' => $item->id])}}" class="btn btn-info text-white mt-2">Посмотреть</a>
                                 </div>
                             </div>
                         </div>
                     @empty
-                        <div class="alert alert-danger">Вы не сделали не одного заказа!</div>
+                        <div class="alert alert-danger">Нет пользователей!</div>
                     @endforelse
                 </div>
             </div>
