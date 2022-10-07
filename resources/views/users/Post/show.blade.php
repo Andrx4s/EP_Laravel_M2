@@ -17,7 +17,7 @@
                         <p class="card-text">Дата редактирования: {{$post->updated_at}}</p>
                         <p class="card-text">Теги: {{$post->tag}}</p>
                         @if($post->user_id == Auth::user()->id)
-                            <a href="{{route('posts.edit', ['post' => $post->id])}}" class="btn btn-primary">Редактировать</a>
+                            <a href="{{route('posts.edit', ['post' => $post->id])}}" class="btn btn-primary mt-2">Редактировать</a>
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                 Удалить
                             </button>
@@ -33,11 +33,11 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Удалить товар {{$post->name}}</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Удалить пост {{$post->name}}</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Вы точно хотите удалить товар
+                    Вы точно хотите удалить пост?
                     {{$post->name}}
                 </div>
                 <div class="modal-footer">

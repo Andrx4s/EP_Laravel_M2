@@ -6,6 +6,13 @@
             <div class="col"></div>
             <div class="col-10">
                 <h1>Все посты</h1>
+                @if(session()->has('successDestroy'))
+                    @if(session()->get('successDestroy'))
+                        <div class="alert alert-success">Аккаунт успешно удален!</div>
+                    @else
+                        <div class="alert alert-danger">Вы не имеете доступа к данному заказу!</div>
+                    @endif
+                @endif
                 <div class="row">
                     @foreach($posts as $post)
                         <div class="col-4 mt-2">

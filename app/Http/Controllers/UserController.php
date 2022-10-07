@@ -78,7 +78,7 @@ class UserController extends Controller
     {
         $roles = Role::all();
         $request->session()->flashInput($user->toArray());
-        return view('admin.user.createOrUpdate.blade.php', compact('user' , 'roles'));
+        return view('admin.user.createOrUpdate', compact('user' , 'roles'));
     }
 
     public function update(UserUpdateValidation $request, User $user)
@@ -91,7 +91,7 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-        return back()->with(['success' => true]);
+        return redirect()->route('admin.user.index')->with(['success' => true]);
     }
 
     public function create()

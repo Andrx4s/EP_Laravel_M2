@@ -66,7 +66,7 @@ class PostController extends Controller
             return back();
         }
         $request->session()->flashInput($post->toArray());
-        return view('users.Post.createOrUpdate.blade.php', compact('post'));
+        return view('users.Post.createOrUpdate', compact('post'));
     }
 
     /**
@@ -98,6 +98,6 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
-        return redirect()->route('posts.index');
+        return redirect()->route('posts.index')->with(['successDestroy' => true]);
     }
 }

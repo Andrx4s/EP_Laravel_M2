@@ -9,7 +9,7 @@
                     @if(session()->get('success'))
                         <div class="alert alert-success">Аккаунт успешно удален!</div>
                     @else
-                        <div class="alert alert-danger">Вы не имеете доступа к данному заказу!</div>
+                        <div class="alert alert-danger">Вы не имеете доступа к данному аккаунту!</div>
                     @endif
                 @endif
                 @if(Auth::user()->role_id == 3)

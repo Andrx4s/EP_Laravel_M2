@@ -22,7 +22,7 @@
                             <p class="card-text">Почта: {{$user->email}}</p>
                             <p class="card-text">Дата рождения: {{$user->updated_at}}</p>
                             <p class="card-text">Роль: {{ $user->role->name }}</p>
-                            <a href="{{route('admin.user.edit', ['user' => $user->id])}}" class="btn btn-primary">Редактировать</a>
+                            <a href="{{route('admin.user.edit', ['user' => $user->id])}}" class="btn btn-primary mt-2">Редактировать</a>
                             <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" href="{{route('admin.user.destroy', ['user' => $user->id])}}" class="btn btn-danger mt-2">Удалить</button>
                         </div>
                     </div>

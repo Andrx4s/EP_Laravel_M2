@@ -12,6 +12,13 @@
                         <div class="alert alert-success">У вас нет доступа!</div>
                     @endif
                 @endif
+                @if(session()->has('delete'))
+                    @if(session()->get('delete'))
+                        <div class="alert alert-success">Роль успешно изменена!</div>
+                    @else
+                        <div class="alert alert-success">У вас нет доступа!</div>
+                    @endif
+                @endif
 
                 <h2>Роли: </h2>
 

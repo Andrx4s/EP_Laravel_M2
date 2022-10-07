@@ -24,7 +24,7 @@ class RoleController extends Controller
     public function create(Request $request)
     {
         $request->session()->flashInput([]);
-        return view('admin.role.createOrUpdate.blade.php');
+        return view('admin.role.createOrUpdate');
     }
 
     /**
@@ -55,7 +55,7 @@ class RoleController extends Controller
     public function edit(Request $request, Role $role)
     {
         $request->session()->flashInput($role->toArray());
-        return view('admin.role.createOrUpdate.blade.php', compact('role'));
+        return view('admin.role.createOrUpdate', compact('role'));
     }
 
     /**
@@ -77,6 +77,6 @@ class RoleController extends Controller
     public function destroy(Role $role)
     {
         $role->delete();
-        return back();
+        return back()->with(['delete' => true]);
     }
 }
