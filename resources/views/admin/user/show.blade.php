@@ -1,5 +1,6 @@
 @extends('welcome')
 
+{{--Секция для вывода одного пользователя--}}
 @section('content')
     <div class="container">
         <div class="row">

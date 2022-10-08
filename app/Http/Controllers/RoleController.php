@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 class RoleController extends Controller
 {
     /**
+     * Вызов страницы со всеми ролями
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index()
@@ -19,6 +20,7 @@ class RoleController extends Controller
     }
 
     /**
+     * Вызов страницы с создание роли
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function create(Request $request)
@@ -28,6 +30,7 @@ class RoleController extends Controller
     }
 
     /**
+     * Функция создания роли
      * @param RoleCreateValidation $request
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -48,6 +51,7 @@ class RoleController extends Controller
     }
 
     /**
+     * Вызов страницы редактирование роли
      * @param Request $request
      * @param Role $role
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
@@ -59,6 +63,7 @@ class RoleController extends Controller
     }
 
     /**
+     * Функция для редактирования роли
      * @param RoleUpdateValidation $request
      * @param Role $role
      * @return \Illuminate\Http\RedirectResponse
@@ -71,6 +76,7 @@ class RoleController extends Controller
     }
 
     /**
+     * Функция для удаления роли
      * @param Role $role
      * @return \Illuminate\Http\RedirectResponse
      */

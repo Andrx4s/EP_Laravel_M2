@@ -1,5 +1,6 @@
 @extends('welcome')
 
+{{--Секция для вывода всех постов--}}
 @section('content')
     <div class="container">
         <div class="row">
@@ -8,9 +9,9 @@
                 <h1>Все посты</h1>
                 @if(session()->has('successDestroy'))
                     @if(session()->get('successDestroy'))
-                        <div class="alert alert-success">Аккаунт успешно удален!</div>
+                        <div class="alert alert-success">Пост успешно удален!</div>
                     @else
-                        <div class="alert alert-danger">Вы не имеете доступа к данному заказу!</div>
+                        <div class="alert alert-danger">Вы не имеете доступа к данному посту!</div>
                     @endif
                 @endif
                 <div class="row">

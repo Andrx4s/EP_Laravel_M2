@@ -9,6 +9,11 @@ class Post extends Model
 {
     use HasFactory;
 
+    /**
+     * Массив атрибутов
+     *
+     * @var array<int, string>
+     */
     protected $fillable = [
         'name',
         'full_description',
@@ -18,6 +23,10 @@ class Post extends Model
         'user_id'
     ];
 
+    /**
+     * Связь с таблицой users
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function user(){
         return $this->belongsTo(User::class);
     }

@@ -26,11 +26,16 @@ Route::post('/login', [UserController::class, 'loginPost']);
 Route::get('/register', [UserController::class, 'register'])->name('register');
 Route::post('/register', [UserController::class, 'registerPost']);
 
+// Промежуточная проверка автризации
 Route::middleware('auth')->group(function() {
 
-    Route::middleware('role:User,Admin')->group(function () {
+//  Промежуточная проверка ролей авторизованных аккаунтов
+    Route::middleware('role:User,Admin,Moderator')->group(function () {
 
+//      Промежуточная проверка на роль админа
         Route::middleware('role:Admin')->group(function () {
+
+//          Совместное использование атрибутов маршута
             Route::group(['prefix' => '/admin', 'as' => 'admin.'], function () {
                 Route::resource('/user', UserController::class);
                 Route::resource('/roles', RoleController::class);

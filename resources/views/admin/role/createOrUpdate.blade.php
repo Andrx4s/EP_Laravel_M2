@@ -1,5 +1,6 @@
 @extends('welcome')
 
+{{--Секция для создания и редактирования ролей--}}
 @section('content')
     <div class="container">
         <div class="row">

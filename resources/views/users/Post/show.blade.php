@@ -1,5 +1,6 @@
 @extends('welcome')
 
+{{--Секция для вывода одного поста--}}
 @section('content')
     <dic class="container">
         <div class="row">
@@ -17,7 +18,7 @@
                         <p class="card-text">Дата редактирования: {{$post->updated_at}}</p>
                         <p class="card-text">Теги: {{$post->tag}}</p>
                         @if($post->user_id == Auth::user()->id)
-                            <a href="{{route('posts.edit', ['post' => $post->id])}}" class="btn btn-primary mt-2">Редактировать</a>
+                            <a href="{{route('posts.edit', ['post' => $post->id])}}" class="btn btn-primary">Редактировать</a>
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                 Удалить
                             </button>

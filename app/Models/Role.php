@@ -9,5 +9,9 @@ class Role extends Model
 {
     use HasFactory;
 
+    /**
+     * Автоматический массив атрибутов
+     * @var string[]
+     */
     protected $guarded = ['id'];
 }

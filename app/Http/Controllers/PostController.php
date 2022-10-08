@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 class PostController extends Controller
 {
     /**
+     * Вызов страницы с выводом по 15 постов
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index()
@@ -20,6 +21,7 @@ class PostController extends Controller
     }
 
     /**
+     * Вывод страницы создания поста
      * @param Request $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
@@ -30,6 +32,7 @@ class PostController extends Controller
     }
 
     /**
+     * Функция валидации и создания поста
      * @param PostCreateValidation $request
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -47,6 +50,7 @@ class PostController extends Controller
     }
 
     /**
+     * Вызов страницы с просмотром одного поста
      * @param Post $post
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
@@ -56,6 +60,7 @@ class PostController extends Controller
     }
 
     /**
+     * Вызов страницы редактирования поста с проверкой пользователя что это его пост
      * @param Request $request
      * @param Post $post
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse
@@ -70,6 +75,7 @@ class PostController extends Controller
     }
 
     /**
+     * Функция для редактирования поста
      * @param PostUpdateValidation $request
      * @param Post $post
      * @return \Illuminate\Http\RedirectResponse
@@ -92,6 +98,7 @@ class PostController extends Controller
     }
 
     /**
+     * Функция для удаления поста
      * @param Post $post
      * @return \Illuminate\Http\RedirectResponse
      */

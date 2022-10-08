@@ -7,7 +7,7 @@ use Illuminate\Foundation\Http\FormRequest;
 class PostCreateValidation extends FormRequest
 {
     /**
-     * Determine if the user is authorized to make this request.
+     * Опредляет авторизован ли пользователь для выполнения запроса
      *
      * @return bool
      */
@@ -17,7 +17,7 @@ class PostCreateValidation extends FormRequest
     }
 
     /**
-     * Get the validation rules that apply to the request.
+     * Правила проверки применимые к запросу
      *
      * @return array<string, mixed>
      */
