@@ -6,13 +6,6 @@
         <div class="row">
             <div class="col"></div>
             <div class="col-8">
-                @if(session()->has('success'))
-                    @if(session()->get('success'))
-                        <div class="alert alert-success">Ваш заказ успешно отменен!</div>
-                    @else
-                        <div class="alert alert-danger">Вы не имеете доступа к данному заказу!</div>
-                    @endif
-                @endif
                     <div class="card mt-2">
                         <div class="card-header">
                             {{ $user->role->name }}: {{$user->fullname}}
@@ -41,7 +34,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Вы точно хотите удалить товар?<br>
+                    Вы точно хотите удалить аккаунт?<br>
                     {{$user->fullname}}
                 </div>
                 <div class="modal-footer">
@@ -49,7 +42,7 @@
                     <form action="{{route('admin.user.destroy', ['user' => $user->id])}}" method="POST">
                         <input type="hidden" name="_method" value="DELETE">
                         @csrf
-                        <button type="submit" class="btn btn-danger">Да я точно хочу удалить данный товар!</button>
+                        <button type="submit" class="btn btn-danger">Да я точно хочу удалить данный аккаунт!</button>
                     </form>
                 </div>
             </div>

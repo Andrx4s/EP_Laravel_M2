@@ -55,7 +55,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Вы точно хотите удалить товар?<br>
+                    Вы точно хотите удалить аккаунт?<br>
                     {{$item->fullname}}
                 </div>
                 <div class="modal-footer">
@@ -63,7 +63,7 @@
                     <form action="{{route('admin.user.destroy', ['user' => $item->id])}}" method="POST">
                         <input type="hidden" name="_method" value="DELETE">
                         @csrf
-                        <button type="submit" class="btn btn-danger">Да я точно хочу удалить данный товар!</button>
+                        <button type="submit" class="btn btn-danger">Да я точно хочу удалить данный аккаунт!</button>
                     </form>
                 </div>
             </div>
