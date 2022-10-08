@@ -13,7 +13,7 @@
                     <div class="card-body text-center">
                         <img src="{{'/public/storage/' . $post->photo}}" class="card-img-top w-50" alt="{{$post->name}}">
                         <p class="card-text">Описание: {{$post->full_description}}</p>
-                        <p class="card-text">Автор: {{$post->user->fullName}}</p>
+                        <p class="card-text">Автор: {{$post->user->fullname}}</p>
                         <p class="card-text">Дата создания: {{$post->created_at}}</p>
                         <p class="card-text">Дата редактирования: {{$post->updated_at}}</p>
                         <p class="card-text">Теги: {{$post->tag}}</p>
